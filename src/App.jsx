@@ -27,6 +27,12 @@ export default function App() {
     })
   }
 
+  function deleteTodo(id){
+    setTodos(currentTodos =>{
+      return currentTodos.filter(todo => todo.id !==id)
+    })
+  }
+
   console.log(todos)
   return (<>
   <form onSubmit={handleSubmit} className="new-item-form">
@@ -39,6 +45,7 @@ export default function App() {
   </form>
   <h1 className="header">Todo List</h1>
   <ul className="list">
+  {todos.length ===0 && "Nothing to do."}
    {todos.map(todo =>{
     return( <li key={todo.id}>
     <label>
